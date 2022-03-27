@@ -44,19 +44,19 @@ function updateGame(){
 }
 
 function finishGame(){
-    document.body.removeChild(rockButton);
-    document.body.removeChild(paperButton);
-    document.body.removeChild(scissorsButton);
-    document.body.appendChild(newGameButton);
+    buttonsContainer.removeChild(rockButton);
+    buttonsContainer.removeChild(paperButton);
+    buttonsContainer.removeChild(scissorsButton);
+    buttonsContainer.appendChild(newGameButton);
 }
 
 function resetGame(){
     playerScore = 0;
     computerScore = 0;
-    document.body.removeChild(newGameButton);
-    document.body.appendChild(rockButton);
-    document.body.appendChild(paperButton);
-    document.body.appendChild(scissorsButton);
+    buttonsContainer.removeChild(newGameButton);
+    buttonsContainer.appendChild(rockButton);
+    buttonsContainer.appendChild(paperButton);
+    buttonsContainer.appendChild(scissorsButton);
     resultsText.textContent = '';
     updateGame();
 }
@@ -64,10 +64,11 @@ function resetGame(){
 let playerScore = 0;
 let computerScore = 0;
 
+const buttonsContainer = document.querySelector('#buttons-container');
 const rockButton = document.querySelector('#rock-btn');
 const paperButton = document.querySelector('#paper-btn');
 const scissorsButton = document.querySelector('#scissors-btn');
-const resultsText = document.querySelector('.results-text');
+const resultsText = document.querySelector('#results-text');
 const playerScoreUI = document.querySelector('#player-score');
 const computerScoreUI = document.querySelector('#computer-score');
 const newGameButton = document.createElement('button');
@@ -89,3 +90,5 @@ scissorsButton.addEventListener('click', () => {
 });
 
 newGameButton.addEventListener('click', resetGame);
+
+finishGame();
